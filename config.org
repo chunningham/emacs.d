@@ -152,23 +152,45 @@ Electric-pair-mode has improved quite a bit in recent Emacs versions. No longer 
 * Third-party packages
 Many Emacsers love having tons of packages -- and that's absolutely fine! However, one of the goals of the Yay-Evil distro is to provide an essential-only foundation for users to build upon. Therefore, only the most important packages and/or lightweight improvements will be included here. For example, completion frameworks like Ivy or Helm are considered heavy by many, yet the built-in Ido serves almost the same purpose. The only arguably opinionated package is probably Evil, but hey! You saw that coming from the distro name, didn't you ;) ?
 ** Evil
-I personally find Vi(m) bindings to be the most efficient way of editing text (especially code). I also changed the default ~:q~ and ~:wq~ to be killing current buffer instead of killing the frame or subsequently killing Emacs.
+This is a suitable evil config should I ever need it
 #+BEGIN_SRC emacs-lisp
-  (use-package evil
-    :diminish undo-tree-mode
-    :init (setq evil-want-C-u-scroll t)
-    :hook (after-init . evil-mode)
-    :config
-    (with-eval-after-load 'evil-maps ; avoid conflict with company tooltip selection
-      (define-key evil-insert-state-map (kbd "C-n") nil)
-      (define-key evil-insert-state-map (kbd "C-p") nil))
-    (evil-set-initial-state 'term-mode 'emacs)
-    (defun ian/save-and-kill-this-buffer ()
-      (interactive)
-      (save-buffer)
-      (kill-this-buffer))
-    (evil-ex-define-cmd "q" 'kill-this-buffer)
-    (evil-ex-define-cmd "wq" 'ian/save-and-kill-this-buffer))
+  ;; (use-package evil
+  ;;   :diminish undo-tree-mode
+  ;;   :init (setq evil-want-C-u-scroll t)
+  ;;   :hook (after-init . evil-mode)
+  ;;   :config
+  ;;   (with-eval-after-load 'evil-maps ; avoid conflict with company tooltip selection
+  ;;     (define-key evil-insert-state-map (kbd "C-n") nil)
+  ;;     (define-key evil-insert-state-map (kbd "C-p") nil))
+  ;;   (evil-set-initial-state 'term-mode 'emacs)
+  ;;   (defun ian/save-and-kill-this-buffer ()
+  ;;     (interactive)
+  ;;     (save-buffer)
+  ;;     (kill-this-buffer))
+  ;;   (evil-ex-define-cmd "q" 'kill-this-buffer)
+  ;;   (evil-ex-define-cmd "wq" 'ian/save-and-kill-this-buffer))
+#+END_SRC
+** Objed
+Objed is a text editing system based around text objects such as paragraphs or
+s-expressions.
+#+BEGIN_SRC emacs-lisp
+(use-package! objed
+  :after-call pre-command-hook
+  :config
+  ;; Prevent undo actions from exiting edit state
+  (add-to-list 'objed-keeper-commands 'undo-tree-undo)
+  (add-to-list 'objed-keeper-commands 'undo-tree-redo)
+  (add-to-list 'objed-keeper-commands 'undo-tree-visualize)
+  (defvar +objed--extra-face-remaps nil)
+
+  ;; create leader key
+  ;;(define-key objed-map (kbd "SPC") 'hydra-hail/body)
+
+  ;; set S-SPC to toggle objed mode
+  (define-key objed-map (kbd "S-SPC") 'objed-quit)
+  (define-key global-map (kbd "S-SPC") 'objed-activate)
+  (setq-default cursor-type 'bar)
+  )
 #+END_SRC
 ** Dashboard welcome page
 #+BEGIN_SRC emacs-lisp
