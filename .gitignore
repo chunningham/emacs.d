@@ -2,6 +2,7 @@
 *
 # Except for..
 !.gitignore
+!early-init.el
 !init.el
 !config.org
 !themes/
