@@ -330,5 +330,6 @@ Some useful but missing major modes
   (use-package highlight-escape-sequences :hook (prog-mode . hes-mode))
 #+END_SRC
 ** Solaire
+Highlights the currently active buffer or minibuffer
 #+BEGIN_SRC emacs-lisp
 #+END_SRC
