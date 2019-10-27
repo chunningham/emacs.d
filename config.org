@@ -31,6 +31,17 @@
   (setq-default indent-tabs-mode nil
                 tab-width 2)
 #+END_SRC
+** Personalisation
+Set user name and email address, as well as auth sources
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "Charles Cunningham"
+      user-mail-address "c.a.cunningham6@gmail.com")
+
+(setq auth-sources '("~/.gnupg/shared/authinfo.gpg"
+                     "~/.authinfo.gpg"
+                     "~/.authinfo"
+                     "~/.netrc"))
+#+END_SRC
 * Configuration for built-in packages
 Since we're using use-package as our package management system, we might as well try to organize under the same syntax as much as possible to keep the configuration consistent.
 ** Split right and split below
