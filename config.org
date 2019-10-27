@@ -225,8 +225,29 @@ A modern on-the-fly syntax checking extension -- absolutely essential
    (use-package flycheck
      :hook (after-init . global-flycheck-mode))
 #+END_SRC
+** Ivy, Counsel and Swiper
+*** Ivy
+For suggestions everywhere:
 #+BEGIN_SRC emacs-lisp
+  (use-package ivy
     :config
+    (ivy-mode 1)
+    (setq ivy-use-virtual-buffers t
+          enable-recursive-minibuffers t))
+#+END_SRC
+*** Counsel
+For nicer functions
+#+BEGIN_SRC emacs-lisp
+  (use-package counsel
+    :config
+    (counsel-mode 1))
+#+END_SRC
+*** Swiper
+For searching
+#+BEGIN_SRC emacs-lisp
+  (use-package swiper
+    :config
+    (swiper))
 #+END_SRC
 ** Magit
 Magit -- need I say more? The best git interface ever.
