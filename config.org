@@ -1,6 +1,9 @@
-#+Title: Yay-Evil distro by Ian Y.E. Pan
-#+Author: Ian Y.E. Pan
+#+Title: MyMacs
+#+Author: Charles Cunningham
 #+Date: 2019
+* About
+This config is a fork of https://github.com/ianpan870102/.emacs.d and is heavily
+inspired by Doom, Spacemacs, rememberYou and Witchmacs
 * Cleaning up the UI and enhance some basic defaults defined in C Source Code
 #+BEGIN_SRC emacs-lisp
   (setq frame-title-format '("Yay-Evil") ; Yayyyyy Evil!
