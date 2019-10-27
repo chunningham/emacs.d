@@ -27,9 +27,33 @@
   ;; increase line space for better readability
   (setq-default line-spacing 3)
 
+  ;; display time in modeline
+  (display-time-mode)
+
+  ;; use y/n instead of yes/no
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; highlight current line
+  (global-hl-line-mode)
+
+  ;; use utf-8
+  (set-default-coding-systems 'utf8)
+
   ;; Always use spaces for indentation (default to 4 spaces).
   (setq-default indent-tabs-mode nil
                 tab-width 2)
+#+END_SRC
+* Init
+** Ensure system packages
+Ensures that packages which have system dependancies have them
+#+BEGIN_SRC emacs-lisp
+(use-package use-package-ensure-system-package)
+#+END_SRC
+** Configure PATH on macOS
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :config (when (memq window-system '(mac ns x))
+              (exec-path-from-shell-initialize)))
 #+END_SRC
 * Configuration for built-in packages
 Since we're using use-package as our package management system, we might as well try to organize under the same syntax as much as possible to keep the configuration consistent.
@@ -287,12 +311,6 @@ Some useful but missing major modes
   (use-package markdown-mode :hook (markdown-mode . visual-line-mode))
 
   (use-package json-mode)
-#+END_SRC
-** Configure PATH on macOS
-#+BEGIN_SRC emacs-lisp
-  (use-package exec-path-from-shell
-    :config (when (memq window-system '(mac ns x))
-              (exec-path-from-shell-initialize)))
 #+END_SRC
 ** Lightweight syntax highlighting improvement for numbers, operators, and escape sequences
 #+BEGIN_SRC emacs-lisp
