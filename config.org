@@ -225,18 +225,8 @@ A modern on-the-fly syntax checking extension -- absolutely essential
    (use-package flycheck
      :hook (after-init . global-flycheck-mode))
 #+END_SRC
-** Ido, ido-vertical, and flex-matching
-Selecting buffers/files with great efficiency. In my opinion, Ido is enough to replace Ivy and Helm. We install ido-vertical to get a better view of the available options (use ~C-n~, ~C-p~ or arrow keys to navigate). Flex matching is a nice touch and we are lucky to have flx-ido for that purpose.
 #+BEGIN_SRC emacs-lisp
-  (use-package ido-vertical-mode
-    :hook ((after-init . ido-mode)
-           (after-init . ido-vertical-mode))
     :config
-    (setq ido-everywhere t
-          ido-enable-flex-matching t
-          ido-vertical-define-keys 'C-n-C-p-up-and-down))
-
-  (use-package flx-ido :config (flx-ido-mode +1))
 #+END_SRC
 ** Magit
 Magit -- need I say more? The best git interface ever.
