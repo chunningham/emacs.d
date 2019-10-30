@@ -40,7 +40,7 @@ inspired by Doom, Spacemacs, rememberYou and Witchmacs
   (global-hl-line-mode)
 
   ;; use utf-8
-  (set-default-coding-systems 'utf8)
+  ;;(set-default-coding-systems 'utf8)
 
   ;; Always use spaces for indentation (default to 4 spaces).
   (setq-default indent-tabs-mode nil
@@ -271,7 +271,7 @@ For suggestions everywhere:
     :diminish
     :custom
     (ivy-count-format "(%d/%d) ")
-    (setq ivy-use-virtual-buffers t)
+    ;;(setq ivy-use-virtual-buffers t)
     :config
     (ivy-mode 1)
     (setq enable-recursive-minibuffers t))
