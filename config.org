@@ -47,17 +47,25 @@ inspired by Doom, Spacemacs, rememberYou and Witchmacs
                 tab-width 2)
 #+END_SRC
 * Init
-** Ensure system packages
-Ensures that packages which have system dependancies have them
-#+BEGIN_SRC emacs-lisp
-(use-package use-package-ensure-system-package)
-#+END_SRC
 ** Configure PATH on macOS
 #+BEGIN_SRC emacs-lisp
   (use-package exec-path-from-shell
     :config (when (memq window-system '(mac ns x))
               (exec-path-from-shell-initialize)))
 #+END_SRC
+
+#+RESULTS:
+: t
+
+** Ensure system packages
+Ensures that packages which have system dependancies have them
+#+BEGIN_SRC emacs-lisp
+(use-package use-package-ensure-system-package
+  :ensure t)
+#+END_SRC
+
+#+RESULTS:
+
 ** Personalisation
 Set user name and email address, as well as auth sources
 #+BEGIN_SRC emacs-lisp
