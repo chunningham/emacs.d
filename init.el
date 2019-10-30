@@ -1,5 +1,5 @@
 ;;; init.el --- Emacs init file
-;;  Author: Ian Y.E. Pan
+;;  Author: Charles Cunningham
 ;;; Commentary:
 ;;; A lightweight Emacs config containing only the essentials: shipped with a custom theme!
 ;;; Code:
@@ -38,15 +38,15 @@
   (setq use-package-always-ensure t))
 
 ;; Dump custom-set-variables to a garbage file and don't load it
-(setq custom-file "./to-be-dumped.el")
+(setq custom-file "~/.emacs.d/.to-be-dumped.el")
 
 ;; Load theme
-(add-to-list 'custom-theme-load-path "./themes/")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'wilmersdorf t)
 
 ;; Load main config file "./config.org"
 (require 'org)
-(org-babel-load-file (expand-file-name "./config.org"))
+(org-babel-load-file (expand-file-name "~/.emacs.d/config.org"))
 
 (provide 'init)
 ;;; init.el ends here
